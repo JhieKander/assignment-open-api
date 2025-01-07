@@ -24,4 +24,20 @@ export class WeatherService {
       throw new InternalServerErrorException('Unable to fetch weather data');
     }
   }
+
+  // 2. Get weather forecast for the next 7 days
+  async getForecast(city: string) {
+    try {
+      const response = await axios.get(`${this.baseUrl}forecast`, {
+        params: {
+          q: city,
+          appid: this.apiKey,
+          units: 'metric',
+        },
+      });
+      return response.data;
+    } catch (error) {
+      throw new InternalServerErrorException('Unable to fetch forecast data');
+    }
+  }
 }
