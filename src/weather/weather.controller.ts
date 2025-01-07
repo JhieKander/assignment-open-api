@@ -10,4 +10,10 @@ export class WeatherController {
   async getCurrentWeather(@Query('city') city: string) {
     return this.weatherService.getCurrentWeather(city);
   }
+
+  // Endpoint for getting weather forecast by city name
+  @Get('forecast')
+  async getForecast(@Query('city') city: string) {
+    return this.weatherService.getForecast(city);
+  }
 }
