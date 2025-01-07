@@ -16,4 +16,13 @@ export class WeatherController {
   async getForecast(@Query('city') city: string) {
     return this.weatherService.getForecast(city);
   }
+
+  // Endpoint for getting weather by coordinates (lat, lon)
+  @Get('coordinates/:lat/:lon')
+  async getWeatherByCoordinates(
+    @Param('lat') lat: number,
+    @Param('lon') lon: number
+  ) {
+    return this.weatherService.getWeatherByCoordinates(lat, lon);
+  }
 }
